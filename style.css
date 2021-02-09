@@ -1,0 +1,16 @@
+div {
+    font-family: Arial, Helvetica, sans-serif;
+    size: 20px;
+}
+#Canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+#fps {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+}

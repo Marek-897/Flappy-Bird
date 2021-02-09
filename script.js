@@ -1,4 +1,5 @@
 // i love js and all but why is everything asynchronous only, i can't simply sync
+// I LOST PROGRESS WTH
 /*  goals:   
         reinplement smooth jump
         better collision detection
@@ -123,7 +124,6 @@ var Obstacle = {
 Object.seal(Obstacle);                      // ease of life, makes it impossible to add new properties 
 
 obstacleInstantiate();                      // instantiates an obstacle as soon as the script is made
-var obstacleInstantiateCycleID = setTimeout(obstacleInstantiate, (obstacleCreationTimer * 1000));
 function obstacleInstantiate() {
     obstacleArray.push(JSON.parse(JSON.stringify(Obstacle)));                                                       // makes obstacle
     obstacleArray[(obstacleArray.length - 1)].y = getRandomIntFrom((Canvas.height / 4), (Canvas.height - (Canvas.height / 20)));    // creates y location
@@ -145,10 +145,22 @@ function obstacleMoveCaller() {                 // moves each obstacle individua
     }
 }
 
+middleObstacleInstantiate();
+async function middleObstacleInstantiate() {
+    var mOIrun = true;
+    while(mOIrun){
+        if(obstacleArray[0].x <= (Canvas.width / 2)){
+            obstacleInstantiate();
+            mOIrun = false;
+        }
+        await timer(50);
+    }
+}
+
 /*################################## Frame & Physics Update Cycles and misc. ##################################*/
 
 // collision and score
-async function collisionUpdate(obstacleIndex) {         // really good collision detector though is more static than i want it to be, can be solved by new spawn method with x = 0
+async function collisionUpdate(obstacleIndex) {         // really good collision detector 
     physicsCheck = true;
     try{
         while(physicsCheck){

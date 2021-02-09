@@ -153,7 +153,7 @@ async function collisionUpdate(obstacleIndex) {         // really good collision
     try{
         while(physicsCheck){
             if((Player.x > (obstacleArray[obstacleIndex].x - Player.width)) && (Player.x < (obstacleArray[obstacleIndex].x + obstacleArray[obstacleIndex].width))) {
-                if((Player.y < obstacleArray[obstacleIndex].y) && (Player.y > (obstacleArray[obstacleIndex].y - obstacleArray[obstacleIndex].gap))){
+                if((Player.y < (obstacleArray[obstacleIndex].y - Player.height)) && (Player.y > (obstacleArray[obstacleIndex].y - obstacleArray[obstacleIndex].gap))){
                     // intended to be blank
                 }
                 else{
